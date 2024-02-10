@@ -1,0 +1,39 @@
+import re
+
+def count_words(text):
+    """
+    Function to count the number of words in the input text.
+
+    Args:
+    text (str): The input text to count words from.
+
+    Returns:
+    int: The count of words in the input text.
+    """
+    # Remove extra spaces and punctuation, then split the text into words
+    words = re.findall(r'\b\w+\b', text.lower())
+    # Return the count of words
+    return len(words)
+
+def main():
+    """
+    Main function to run the Word Counter program.
+    """
+    print("Welcome to Word Counter!")
+    while True:
+        # Take user input
+        text = input("Enter a sentence or paragraph (or 'q' to quit): ")
+        # Check if the user wants to quit
+        if text.lower() == 'q':
+            print("Thank you for using Word Counter. Goodbye!")
+            break
+        # Check if the input is empty
+        if not text.strip():
+            print("Please enter some text.")
+            continue
+        # Call the count_words function and display the result
+        word_count = count_words(text)
+        print("Word count:", word_count)
+
+if __name__ == "__main__":
+    main()
